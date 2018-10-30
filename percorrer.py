@@ -15,8 +15,12 @@ non_vulnerables = []
 for i in range(len(sites)):
     if pl.test_drupalgeddon2(sites[i]) == 1:
         vulnerables.append(sites[i])
+        print(sites[i])
+        print("Vulneravel")
     else:
         non_vulnerables.append(sites[i])
+        print(sites[i])
+        print("Nao vulneravel")
 print("****Vulnerables****")
 print(vulnerables)
 print("****Non-vulnerables****")
