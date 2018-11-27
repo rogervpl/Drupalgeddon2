@@ -9,19 +9,19 @@ sites = []
 for a in soup.find_all("a", href=True):
     sites.append(a['href'])
 
-vulnerables = []
-non_vulnerables = []
+vulnerable = []
+non_vulnerable = []
 
 for i in range(len(sites)):
+    print(sites[i])
     if pl.test_drupalgeddon2(sites[i]) == 1:
-        vulnerables.append(sites[i])
-        print(sites[i])
+        vulnerable.append(sites[i])
         print("Vulneravel")
     else:
-        non_vulnerables.append(sites[i])
-        print(sites[i])
+        non_vulnerable.append(sites[i])
         print("Nao vulneravel")
-print("****Vulnerables****")
-print(vulnerables)
-print("****Non-vulnerables****")
-print(non_vulnerables)
+
+#print("****Vulnerable****")
+#print(vulnerable)
+#print("****Non-vulnerable****")
+#print(non_vulnerable)
